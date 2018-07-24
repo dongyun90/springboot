@@ -13,7 +13,7 @@ public interface SpringBootMapper {
 
     int insertSelective(SpringBootModel record);
 
-    SpringBootModel selectByPrimaryKey(@Param(value = "springId") Integer id);
+    List<SpringBootModel> selectByPrimaryKey(@Param(value = "springId") Integer id);
 
     int updateByPrimaryKeySelective(SpringBootModel record);
 

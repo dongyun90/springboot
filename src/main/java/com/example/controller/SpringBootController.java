@@ -3,7 +3,6 @@ package com.example.controller;
 import com.example.model.HelloBean;
 import com.example.model.SpringBootModel;
 import com.example.service.SpringBootService;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -78,7 +77,7 @@ public class SpringBootController {
     }
 
     @RequestMapping("/selectByPrimaryKey")
-    public SpringBootModel selectByPrimaryKey(@Param("springId") Integer id) {
+    public List<SpringBootModel> selectByPrimaryKey(@RequestParam(name = "springId", defaultValue = "0") Integer id) {
         return springBootService.selectByPrimaryKey(id);
     }
 

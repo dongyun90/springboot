@@ -19,7 +19,7 @@ public class SpringBootServiceImpl implements SpringBootService {
     }
 
     @Override
-    public SpringBootModel selectByPrimaryKey(Integer id) {
+    public List<SpringBootModel> selectByPrimaryKey(Integer id) {
         return springBootMapper.selectByPrimaryKey(id);
     }
 }

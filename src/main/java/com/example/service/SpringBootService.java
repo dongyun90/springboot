@@ -8,5 +8,5 @@ import java.util.List;
 public interface SpringBootService {
     List<SpringBootModel> getAllTests();
 
-    SpringBootModel selectByPrimaryKey(Integer id);
+    List<SpringBootModel> selectByPrimaryKey(Integer id);
 }
