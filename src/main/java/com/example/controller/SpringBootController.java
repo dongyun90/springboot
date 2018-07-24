@@ -1,8 +1,9 @@
 package com.example.controller;
 
-import com.example.mapper.SpringBootTestMapper;
 import com.example.model.HelloBean;
-import com.example.model.SpringBootTest;
+import com.example.model.SpringBootModel;
+import com.example.service.SpringBootService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class HelloController {
+public class SpringBootController {
 //    @Component
 //    @ConfigurationProperties(prefix = "bean")
 //    class HelloBean {
@@ -64,7 +65,7 @@ public class HelloController {
     private HelloBean helloBean;
 
     @Autowired
-    private SpringBootTestMapper mapper;
+    private SpringBootService springBootService;
 
     @RequestMapping("/hello")
     public String hello(@RequestParam(name = "age", defaultValue = "33") Integer a) {
@@ -72,7 +73,13 @@ public class HelloController {
     }
 
     @RequestMapping("/getAllTest")
-    public List<SpringBootTest> getAllTest() {
-        return mapper.getAllTests();
+    public List<SpringBootModel> getAllTest() {
+        return springBootService.getAllTests();
     }
+
+    @RequestMapping("/selectByPrimaryKey")
+    public SpringBootModel selectByPrimaryKey(@Param("springId") Integer id) {
+        return springBootService.selectByPrimaryKey(id);
+    }
+
 }

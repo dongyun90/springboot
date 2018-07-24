@@ -6,7 +6,7 @@ import java.io.Serializable;
  * spring_boot_test
  * @author 
  */
-public class SpringBootTest implements Serializable {
+public class SpringBootModel implements Serializable {
     private Integer id;
 
     private String name;
@@ -40,7 +40,7 @@ public class SpringBootTest implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        SpringBootTest other = (SpringBootTest) that;
+        SpringBootModel other = (SpringBootModel) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
             && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()));
     }
