@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.mapper.SpringBootMapper">
     <select id="selectByPrimaryKey" parameterType="int" resultType="com.example.model.SpringBootModel">
-        SELECT id, NAME FROM Student
+        SELECT id, NAME FROM spring_boot_test
         <where>
             <if test="springId != null">
                 id > #{springId, jdbcType=VARCHAR}
