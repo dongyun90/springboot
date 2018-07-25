@@ -4,7 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConfigurationProperties(prefix = "bean")
+@ConfigurationProperties(prefix = "hello.bean")
 public class HelloBean {
     private String school;
     private String institute;

@@ -81,4 +81,13 @@ public class SpringBootController {
         return springBootService.selectByPrimaryKey(id);
     }
 
+    @RequestMapping("/setValueFromRedis")
+    public String setValueFromRedis(@RequestParam("key") String key, @RequestParam("value") String value) {
+        return springBootService.setValueFromRedis(key, value);
+    }
+
+    @RequestMapping("/getValueFromRedis")
+    public String getValueFromRedis(@RequestParam("key") String key) {
+        return springBootService.getValueFromRedis(key);
+    }
 }
