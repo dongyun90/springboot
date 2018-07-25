@@ -3,7 +3,7 @@ package com.example.service.impl;
 import com.example.mapper.SpringBootMapper;
 import com.example.model.SpringBootModel;
 import com.example.service.SpringBootService;
-import com.example.config.RedisConfig;
+import com.example.utils.JedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
@@ -15,7 +15,7 @@ public class SpringBootServiceImpl implements SpringBootService {
     @Autowired
     private SpringBootMapper springBootMapper;
     @Autowired
-    private RedisConfig redisConfig;
+    private JedisUtil jedisUtil;
 
     @Override
     public List<SpringBootModel> getAllTests() {
@@ -29,30 +29,12 @@ public class SpringBootServiceImpl implements SpringBootService {
 
     @Override
     public String getValueFromRedis(String key) {
-        Jedis jedis = redisConfig.getJedisPool().getResource();
-        try {
-            //return value by key from redis
-            return jedis.get(key);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            jedis.close();
-        }
-        return null;
+        return jedisUtil.get(key);
     }
 
     @Override
     public String setValueFromRedis(String key, String value) {
-        Jedis jedis = redisConfig.getJedisPool().getResource();
-        try {
-            //return status code from redis
-            return jedis.set(key, value);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            jedis.close();
-        }
-        return null;
+        return jedisUtil.set(key, value);
     }
 
 }
