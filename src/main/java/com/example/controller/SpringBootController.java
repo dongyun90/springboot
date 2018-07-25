@@ -3,6 +3,8 @@ package com.example.controller;
 import com.example.model.HelloBean;
 import com.example.model.SpringBootModel;
 import com.example.service.SpringBootService;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,46 +14,6 @@ import java.util.List;
 
 @RestController
 public class SpringBootController {
-//    @Component
-//    @ConfigurationProperties(prefix = "bean")
-//    class HelloBean {
-//        private String school;
-//        private String institute;
-//        private String study;
-//
-//        public String getSchool() {
-//            return school;
-//        }
-//
-//        public void setSchool(String school) {
-//            this.school = school;
-//        }
-//
-//        public String getInstitute() {
-//            return institute;
-//        }
-//
-//        public void setInstitute(String institute) {
-//            this.institute = institute;
-//        }
-//
-//        public String getStudy() {
-//            return study;
-//        }
-//
-//        public void setStudy(String study) {
-//            this.study = study;
-//        }
-//
-//        @Override
-//        public String toString() {
-//            return "HelloBean{" +
-//                    "school='" + school + '\'' +
-//                    ", institute='" + institute + '\'' +
-//                    ", study='" + study + '\'' +
-//                    '}';
-//        }
-//    }
 
 //    @Value("${school}")
 //    private String school;
@@ -61,14 +23,16 @@ public class SpringBootController {
 //    private String study;
 
     @Autowired
+    @Setter
+    @Getter
     private HelloBean helloBean;
 
     @Autowired
     private SpringBootService springBootService;
 
     @RequestMapping("/hello")
-    public String hello(@RequestParam(name = "age", defaultValue = "33") Integer a) {
-        return helloBean.toString();
+    public HelloBean hello(@RequestParam(name = "age", defaultValue = "33") Integer a) {
+        return helloBean;
     }
 
     @RequestMapping("/getAllTest")
