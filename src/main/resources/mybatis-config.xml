@@ -11,6 +11,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<property name="dialect" value="mysql" />
 	</properties>
 	<settings>
-		<setting name="logImpl" value="LOG4J2" />
+		<setting name="logImpl" value="LOG4J" />
 	</settings>
 </configuration>    
