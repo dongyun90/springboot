@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -26,13 +27,15 @@ public class SpringBootController {
     @Setter
     @Getter
     private HelloBean helloBean;
-
+    @Autowired
+    private RestTemplate restTemplate;
     @Autowired
     private SpringBootService springBootService;
 
     @RequestMapping("/hello")
     public HelloBean hello(@RequestParam(name = "age", defaultValue = "33") Integer a) {
         return helloBean;
+//        return restTemplate.getForObject("http://SERVICE-HELLO/hello", HelloBean.class);
     }
 
     @RequestMapping("/getAllTest")
